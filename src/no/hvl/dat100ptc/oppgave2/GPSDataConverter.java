@@ -1,14 +1,19 @@
 package no.hvl.dat100ptc.oppgave2;
 
+import java.util.Scanner;
+
 import no.hvl.dat100ptc.TODO;
 import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
+// konverter tidsinformasjon i gps data punkt til antall sekunder fra midnatt
+// dvs. ignorer information om dato og omregn tidspunkt til sekunder
+// Eksempel - tidsinformasjon (som String): 2017-08-13T08:52:26.000Z
+// skal omregnes til sekunder (som int): 8 * 60 * 60 + 52 * 60 + 26 
+
+
 public class GPSDataConverter {
 
-	// konverter tidsinformasjon i gps data punkt til antall sekunder fra midnatt
-	// dvs. ignorer information om dato og omregn tidspunkt til sekunder
-	// Eksempel - tidsinformasjon (som String): 2017-08-13T08:52:26.000Z
-    // skal omregnes til sekunder (som int): 8 * 60 * 60 + 52 * 60 + 26 
+
 	private static int TIME_STARTINDEX = 11; // posisjon for start av tidspunkt i timestr
 
 	
@@ -19,19 +24,22 @@ public class GPSDataConverter {
 		// OPPGAVE - START
 		
 		int secs;
-		int hr, min, sec;
-		
-		String[] oppdeling = timestr.substring(TIME_STARTINDEX,19).split(":");
-		hr = Integer.parseInt(oppdeling[0]);
-		min = Integer.parseInt(oppdeling[1]);
-		sec = Integer.parseInt(oppdeling[2]);
-		
-		secs = hr * 60 * 60 + min + 60 + sec;
-	
-		System.out.println("tiden i sekunder er ");
-		 
-		return secs;
-		
+ 		int hr, min, sec;
+
+ 		// TODO
+ 		// OPPGAVE - START
+ 		String timer = timestr.substring(TIME_STARTINDEX, 13);
+ 		String minutter = timestr.substring(14, 16);
+ 		String sekunder = timestr.substring(17, 19);
+
+ 		hr = Integer.parseInt(timer);
+ 		min = Integer.parseInt(minutter);
+ 		sec = Integer.parseInt(sekunder);
+
+ 		
+ 		secs = 60 * hr + 60 * min + sec;
+
+ 		return secs;
 
 		// OPPGAVE - SLUTT
 		
@@ -50,5 +58,7 @@ public class GPSDataConverter {
 	    
 	}
 }
+
+
 
 
