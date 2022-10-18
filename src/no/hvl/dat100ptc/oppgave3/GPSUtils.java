@@ -36,12 +36,33 @@ public class GPSUtils {
 
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
-		// TODO - START
+			// TODO - START
+		//lage ny tabell som har like lang lengde som latidudes
 		
-		throw new UnsupportedOperationException(TODO.method());
+		double [] latitudes = new double[gpspoints.length];
+		
+		//en metode å gjøre det på. utvid for løkke
+		
+		int i = 0;
+		for(GPSPoint gpspoint : gpspoints) {
+			latitudes[i] = gpspoint.getLatitude();
+			i++;
+		}
+		
+		
+		/*en metode å gjøre det. for løkke
+		for (int i = 0; i<gpspoints.length; i++) {
+			
+			latitudes[i] = gpspoints[i].getLatitude();
+			*/
+		
+		return latitudes;
+		
+		//throw new UnsupportedOperationException(TODO.method());
 		
 		// TODO - SLUTT
 	}
+	
 
 	public static double[] getLongitudes(GPSPoint[] gpspoints) {
 
